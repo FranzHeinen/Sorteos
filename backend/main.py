@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from app.models import ParticipanteRequest, ParticipanteResponse, MercadoPagoWebhookPayload
-from app.sheets_service import GoogleSheetsService
+from backend.app.models import ParticipanteRequest, ParticipanteResponse, MercadoPagoWebhookPayload
+from backend.app.sheets_service import GoogleSheetsService
 
 app = FastAPI(
     title="AutoSorteo Pro API",
