@@ -21,6 +21,7 @@ class ParticipanteResponse(BaseModel):
     tickets: List[str]
     sheet_synced: bool
     modo: str
+    payment_url: Optional[str] = None
 
 class MercadoPagoWebhookPayload(BaseModel):
     action: Optional[str] = None

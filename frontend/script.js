@@ -145,7 +145,11 @@ async function handleParticipantSubmit(event) {
     const data = await response.json();
 
     if (response.ok && data.success) {
-      showSuccess(data);
+      if (data.payment_url) {
+        window.location.href = data.payment_url;
+      } else {
+        showSuccess(data);
+      }
     } else {
       // Si falla o no está conectado el backend, usar modo simulación amigable
       console.warn("API offline o error, procesando en modo simulación local:", data);

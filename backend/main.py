@@ -53,17 +53,18 @@ async def registrar_participacion(data: ParticipanteRequest):
         estado="Pendiente Pago" # Inicialmente pendiente
     )
     
-    return ParticipanteResponse(
-        success=True,
-        message="Participante registrado, redirigiendo a pago.",
-        nombre=data.nombre,
-        dni=data.dni,
-        producto=data.producto,
-        chances=data.chances,
-        tickets=tickets,
-        sheet_synced=synced,
-        modo=modo
-    )
+    return {
+        "success": True,
+        "message": "Participante registrado, redirigiendo a pago.",
+        "nombre": data.nombre,
+        "dni": data.dni,
+        "producto": data.producto,
+        "chances": data.chances,
+        "tickets": tickets,
+        "sheet_synced": synced,
+        "modo": modo,
+        "payment_url": "https://mpago.la/1ijAQNk"
+    }
 
 @app.post("/api/webhook/mercadopago")
 async def webhook_mercadopago(request: Request):
