@@ -1,0 +1,14 @@
+# Credenciales y secretos
+backend/credentials.json
+backend/.env
+backend/.env.txt
+
+# Caché, entornos y temporales
+backend/__pycache__/
+backend/venv/
+.DS_Store
+*.pyc
+__pycache__/
+
+# Otros
+Nuevo documento de texto.txt

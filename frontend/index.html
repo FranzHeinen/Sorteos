@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gran Sorteo 0KM - Adquirí tu Producto y Participá</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Background decorative elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <span class="logo-badge">0KM</span>
+        <span class="logo-text">AUTOSORTEO<strong>PRO</strong></span>
+      </div>
+      <div class="nav-actions">
+        <a href="#productos" class="btn btn-secondary-sm">Ver Productos</a>
+        <a href="#como-funciona" class="nav-link">¿Cómo funciona?</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="event-badge">
+          <span class="pulse-dot"></span> SORTEO EN VIVO 2026
+        </div>
+        <h1 class="hero-title">LLEVATE ESTE <span class="gradient-text">0KM SOÑADO</span> A TU CASA</h1>
+        <p class="hero-subtitle">
+          Adquirí tu llavero o calcomanía oficial de colección y participá automáticamente del sorteo certificado ante escribano público.
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-card">
+          <span class="countdown-label">Tiempo restante para el sorteo:</span>
+          <div class="timer" id="timer">
+            <div class="time-box">
+              <span class="time-number" id="days">14</span>
+              <span class="time-text">Días</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-box">
+              <span class="time-number" id="hours">08</span>
+              <span class="time-text">Horas</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-box">
+              <span class="time-number" id="minutes">42</span>
+              <span class="time-text">Minutos</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-box">
+              <span class="time-number" id="seconds">15</span>
+              <span class="time-text">Segundos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#productos" class="btn btn-primary btn-glow">
+            <span>¡Quiero Participar Ahora!</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="trust-badge">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span>Registro instantáneo en planilla oficial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Car Showcase with 3D/Interactive Animation -->
+      <div class="hero-car-showcase">
+        <div class="car-stage" id="carStage">
+          <div class="speed-lines"></div>
+          <div class="underglow"></div>
+          
+          <!-- Interactive Car Viewer -->
+          <div class="car-frame float-animation" id="carDisplay">
+            <div class="car-view active" data-angle="frontal">
+              <!-- Modern Sport Car SVG Vector Mockup -->
+              <svg viewBox="0 0 600 320" class="car-svg">
+                <defs>
+                  <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff3b30"/>
+                    <stop offset="50%" stop-color="#e60012"/>
+                    <stop offset="100%" stop-color="#99000b"/>
+                  </linearGradient>
+                  <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#38ef7d" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#111827" stop-opacity="0.8"/>
+                  </linearGradient>
+                  <filter id="neonLight" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="8" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+                <!-- Shadow -->
+                <ellipse cx="300" cy="285" rx="270" ry="25" fill="#000" opacity="0.6"/>
+                <!-- Wheels -->
+                <g class="car-wheels">
+                  <circle cx="140" cy="245" r="46" fill="#121212" stroke="#444" stroke-width="6"/>
+                  <circle cx="140" cy="245" r="26" fill="#2a2a2a" stroke="#e60012" stroke-width="2"/>
+                  <circle cx="140" cy="245" r="10" fill="#fff"/>
+                  <circle cx="460" cy="245" r="46" fill="#121212" stroke="#444" stroke-width="6"/>
+                  <circle cx="460" cy="245" r="26" fill="#2a2a2a" stroke="#e60012" stroke-width="2"/>
+                  <circle cx="460" cy="245" r="10" fill="#fff"/>
+                </g>
+                <!-- Chassis / Body -->
+                <path d="M 60,230 Q 80,185 135,185 L 205,175 L 280,110 Q 320,95 410,105 L 490,175 Q 545,185 550,225 Q 540,260 485,255 L 435,255 Q 430,215 390,215 Q 350,215 345,255 L 220,255 Q 215,215 175,215 Q 135,215 130,255 L 85,255 Q 50,250 60,230 Z" fill="url(#bodyGrad)"/>
+                <!-- Cabin Glass -->
+                <path d="M 215,170 L 285,116 L 395,112 L 465,170 Z" fill="url(#glassGrad)" stroke="#111" stroke-width="2"/>
+                <!-- Details & Headlights -->
+                <path d="M 520,195 L 555,200 L 530,215 Z" fill="#00ffff" filter="url(#neonLight)"/>
+                <path d="M 65,205 L 85,205 L 75,218 Z" fill="#ff1744" filter="url(#neonLight)"/>
+                <path d="M 220,185 L 450,185" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+                <text x="300" y="225" font-family="'Space Grotesk', sans-serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle" letter-spacing="4">EDICIÓN 0KM</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Angle Selector Tabs -->
+          <div class="view-controls">
+            <button class="angle-btn active" data-target="frontal">Perspectiva</button>
+            <button class="angle-btn" data-target="lateral">Lateral</button>
+            <button class="angle-btn" data-target="interior">Interior</button>
+            <button class="angle-btn" data-target="trasera">Trasera</button>
+          </div>
+
+          <div class="badge-overlay">
+            <span>⭐ Modelo 2026 - 0 Kilómetros</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Stats / Social Proof -->
+  <div class="stats-bar">
+    <div class="container stats-flex">
+      <div class="stat-item">
+        <strong id="liveTicketsSold">842</strong>
+        <span>Chances emitidas</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <strong>100%</strong>
+        <span>Legal y Auditado</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <strong>Google Sheets</strong>
+        <span>Sincronización en tiempo real</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products / Participation Options -->
+  <section class="products-section" id="productos">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading">COMPRÁ Y PARTICIPÁ</span>
+        <h2 class="section-title">Elegí tu producto oficial</h2>
+        <p class="section-desc">Cada compra incluye tu producto exclusivo y te asigna números automáticos en la planilla para el sorteo del auto.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1: Calco -->
+        <div class="product-card" data-product="calco" data-chances="1" data-price="2500">
+          <div class="product-badge">Económico</div>
+          <div class="product-img-box">
+            <div class="product-icon">🏷️</div>
+            <div class="ticket-pill">1 Chance</div>
+          </div>
+          <h3 class="product-name">Calcomanía Oficial</h3>
+          <p class="product-detail">Calco vinílico tornasolado de alta resistencia para tu auto, moto o termo.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">2.500</span>
+          </div>
+          <ul class="product-perks">
+            <li>✓ 1 Número para el sorteo del 0KM</li>
+            <li>✓ Registro directo en Google Sheets</li>
+            <li>✓ Envío digital de cupón</li>
+          </ul>
+          <button class="btn btn-buy" onclick="openCheckout('Calcomanía Oficial', 2500, 1)">
+            Comprar y Participar
+          </button>
+        </div>
+
+        <!-- Product 2: Llavero (Featured) -->
+        <div class="product-card featured" data-product="llavero" data-chances="3" data-price="5000">
+          <div class="product-badge-featured">MÁS ELEGIDO ⚡</div>
+          <div class="product-img-box">
+            <div class="product-icon">🔑</div>
+            <div class="ticket-pill bonus">3 Chances</div>
+          </div>
+          <h3 class="product-name">Llavero Metálico Turbo</h3>
+          <p class="product-detail">Llavero macizo de aleación con logo grabado láser conmemorativo del evento.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">5.000</span>
+          </div>
+          <ul class="product-perks">
+            <li>✓ <strong>3 Números</strong> para el sorteo</li>
+            <li>✓ Triple probabilidad de ganar</li>
+            <li>✓ Registro instantáneo en planilla</li>
+            <li>✓ Notificación por WhatsApp / Email</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="openCheckout('Llavero Metálico Turbo', 5000, 3)">
+            Comprar y Participar
+          </button>
+        </div>
+
+        <!-- Product 3: Pack Fanático -->
+        <div class="product-card" data-product="pack" data-chances="10" data-price="12000">
+          <div class="product-badge">MÁXIMA CHANCE</div>
+          <div class="product-img-box">
+            <div class="product-icon">📦</div>
+            <div class="ticket-pill pack">10 Chances</div>
+          </div>
+          <h3 class="product-name">Super Pack Fanático</h3>
+          <p class="product-detail">1 Llavero Metálico Edición Oro + 3 Calcomanías oficiales exclusivas.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">12.000</span>
+          </div>
+          <ul class="product-perks">
+            <li>✓ <strong>10 Números</strong> para el 0KM</li>
+            <li>✓ Máxima probabilidad de salir sorteado</li>
+            <li>✓ Registro prioritario en la planilla</li>
+            <li>✓ Descuento en futuros eventos</li>
+          </ul>
+          <button class="btn btn-buy" onclick="openCheckout('Super Pack Fanático', 12000, 10)">
+            Comprar y Participar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="como-funciona">
+    <div class="container">
+      <h2 class="section-title text-center">¿Cómo funciona el sorteo?</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h4>Elegí tu producto</h4>
+          <p>Seleccionás el llavero, calco o pack que más te guste según la cantidad de chances deseadas.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h4>Completás tu pago</h4>
+          <p>A través de Mercado Pago, transferencia o tarjeta de forma simple y 100% segura.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h4>Registro automático</h4>
+          <p>El sistema asienta de inmediato tu nombre, DNI y números en la planilla oficial de Google Sheets.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h4>¡El Auto puede ser tuyo!</h4>
+          <p>El sorteo se transmite en vivo. Si sale tu número, el auto 0KM se entrega con papeles al día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Participant Modal / Checkout -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeCheckout()">&times;</button>
+      
+      <!-- Stage 1: Form -->
+      <div id="checkoutFormStage">
+        <div class="modal-header">
+          <h3>Confirmá tu Participación</h3>
+          <p>Completá tus datos para emitir tus tickets y registrarte en la planilla oficial.</p>
+        </div>
+
+        <div class="selected-product-summary">
+          <div class="summary-info">
+            <span class="summary-label">Producto seleccionado:</span>
+            <strong id="modalProductName">Llavero Metálico Turbo</strong>
+          </div>
+          <div class="summary-price">
+            <strong id="modalProductPrice">$5.000</strong>
+            <span id="modalProductChances" class="summary-chances">3 Chances</span>
+          </div>
+        </div>
+
+        <form id="participantForm" onsubmit="handleParticipantSubmit(event)">
+          <div class="form-group">
+            <label for="nombre">Nombre y Apellido *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="juan@correo.com">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="+54 9 11 ...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dni">DNI / Documento de Identidad *</label>
+            <input type="text" id="dni" name="dni" required placeholder="Ej: 38450123">
+          </div>
+
+          <div class="form-group">
+            <label>Medio de Pago preferido</label>
+            <div class="payment-options">
+              <label class="pay-radio">
+                <input type="radio" name="payment_method" value="mercadopago" checked>
+                <span>💳 Mercado Pago / Tarjeta</span>
+              </label>
+              <label class="pay-radio">
+                <input type="radio" name="payment_method" value="transferencia">
+                <span>🏦 Transferencia Bancaria</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary btn-block btn-pay" id="btnSubmit">
+              <span id="btnText">Continuar y Registrar Pago</span>
+              <span id="btnSpinner" class="spinner hidden"></span>
+            </button>
+            <p class="secure-notice">🔒 Tus datos están protegidos y se asientan directamente en la planilla oficial.</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Stage 2: Success / Confirmation with Ticket Numbers -->
+      <div id="checkoutSuccessStage" class="hidden">
+        <div class="success-content">
+          <div class="success-icon">🎉</div>
+          <h3>¡Felicitaciones! Ya estás participando</h3>
+          <p class="success-message">Tu pago fue procesado y tus datos fueron asentados exitosamente en la planilla de Google Sheets.</p>
+          
+          <div class="ticket-box">
+            <span class="ticket-title">TUS NÚMEROS ASIGNADOS:</span>
+            <div class="ticket-numbers" id="assignedTicketNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="participant-summary-card">
+            <div class="summary-line"><span>Participante:</span> <strong id="successName">-</strong></div>
+            <div class="summary-line"><span>Documento:</span> <strong id="successDni">-</strong></div>
+            <div class="summary-line"><span>Producto:</span> <strong id="successProduct">-</strong></div>
+            <div class="summary-line"><span>Estado Planilla:</span> <strong class="badge-synced">✓ Registrado en Google Sheets</strong></div>
+          </div>
+
+          <button class="btn btn-secondary btn-block" onclick="closeCheckout()">Finalizar y Volver</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 AutoSorteo Pro. Todos los derechos reservados. Las bases y condiciones se encuentran depositadas ante escribano público.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

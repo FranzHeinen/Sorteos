@@ -1,0 +1,6 @@
+# Archivos de credenciales y configuración sensibles
+backend/.env
+backend/credentials.json
+backend/__pycache__/
+backend/venv/
+.DS_Store
