@@ -1,27 +1,35 @@
-# # AutoSorteo Pro
+# AutoSorteo Pro
 
-Sorteo de auto 0KM con registro automático en Google Sheets y pagos via Mercado Pago.
+Plataforma de sorteo de auto 0KM con registro automatico en Google Sheets y pagos via Mercado Pago.
+
+---
 
 ## Herramientas utilizadas
 
-- **Python 3.14** - Lenguaje principal
-- **FastAPI** - Framework del backend
-- **Uvicorn** - Servidor web
-- **gspread + google-auth** - Conexion a Google Sheets
-- **Mercado Pago SDK** - Pasarela de pagos
-- **pydantic** - Validacion de datos
-- **HTML5 + CSS3 + JavaScript** - Frontend
-- **Render** - Hosting en la nube
-- **Git + GitHub** - Control de versiones
+- Python 3.14
+- FastAPI
+- Uvicorn
+- gspread + google-auth
+- Mercado Pago SDK
+- pydantic
+- HTML5 + CSS3 + JavaScript
+- Render
+- Git + GitHub
+
+---
 
 ## Estadisticas del proyecto
 
-- Frontend (animaciones, formulario, redirect): 100%
-- Backend (API, validacion, registro): 100%
-- Google Sheets (registro automatico): 100%
-- Mercado Pago (link de pago): 100%
-- Despliegue en produccion (Render): 100%
-- Seguridad (.gitignore, variables entorno): 100%
+Frontend (animaciones, formulario, redirect):      [████████████████████] 100%
+Backend (API, validacion, registro):                [████████████████████] 100%
+Google Sheets (registro automatico):                [████████████████████] 100%
+Mercado Pago (link de pago):                        [████████████████████] 100%
+Despliegue en produccion (Render):                  [████████████████████] 100%
+Seguridad (.gitignore, variables entorno):          [████████████████████] 100%
+
+Total: 6/6 modulos completos
+
+---
 
 ## Como funciona
 
@@ -31,13 +39,17 @@ Sorteo de auto 0KM con registro automático en Google Sheets y pagos via Mercado
 4. Redirige automaticamente al link de pago de Mercado Pago
 5. El pago se confirma y el participante queda habilitado
 
+---
+
 ## Variables de entorno para Render
 
 - GOOGLE_SHEETS_CREDENTIALS_JSON - Credenciales de Google como JSON
-- SPREADSHEET_ID - ID de la planilla (1Ot_7fgO0ODteUAdoEg6hXbH3ZPO8xDl_F1yP1fEbuZU)
+- SPREADSHEET_ID - ID de la planilla
 - WORKSHEET_NAME - Nombre de la hoja (Participantes)
 - MP_ACCESS_TOKEN - Token de Mercado Pago
-- PAYMENT_URL - Link de pago (https://mpago.la/1ijAQNk)
+- PAYMENT_URL - Link de pago
+
+---
 
 ## Estructura del proyecto
 
@@ -54,6 +66,4 @@ sorteo_auto/
       sheets_service.py
     requirements.txt
     .env.example
-    .env
-    credentials.json
   README.md
