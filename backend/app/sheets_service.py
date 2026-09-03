@@ -1,12 +1,12 @@
 import os
 import csv
+import json
 import logging
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Tuple
 
 from app.config import (
-    CREDENTIALS_FILE,
     SPREADSHEET_NAME,
     WORKSHEET_NAME,
     BACKUP_CSV_FILE,
@@ -16,19 +16,9 @@ logger = logging.getLogger("sheets_service")
 
 # Encabezados estándar de la planilla
 SHEET_HEADERS = [
-    "Fecha",
-    "Hora",
-    "ID Transacción",
-    "Nombre y Apellido",
-    "DNI",
-    "Email",
-    "Teléfono",
-    "Producto",
-    "Monto ($)",
-    "Chances",
-    "Números de Sorteo",
-    "Medio de Pago",
-    "Estado"
+    "Fecha", "Hora", "ID Transacción", "Nombre y Apellido", "DNI", "Email", 
+    "Teléfono", "Producto", "Monto ($)", "Chances", "Números de Sorteo", 
+    "Medio de Pago", "Estado"
 ]
 
 class GoogleSheetsService:
@@ -38,31 +28,35 @@ class GoogleSheetsService:
         self._init_connection()
 
     def _init_connection(self):
-        """Intenta inicializar la conexión con Google Sheets si existe el archivo de credenciales"""
-        cred_path = Path(__file__).resolve().parent.parent / CREDENTIALS_FILE
-        
-        if not cred_path.exists():
-            logger.warning(
-                f"No se encontró el archivo de credenciales de Google Sheets en '{cred_path}'. "
-                "Operando en modo SIMULACIÓN con respaldo en CSV local."
-            )
-            self.is_connected = False
-            return
-
+        """Inicializa conexión usando archivo local o variable de entorno para producción"""
         try:
             import gspread
             from google.oauth2.service_account import Credentials
-
+            
             scopes = [
                 "https://www.googleapis.com/auth/spreadsheets",
                 "https://www.googleapis.com/auth/drive"
             ]
-            creds = Credentials.from_service_account_file(str(cred_path), scopes=scopes)
+
+            # 1. Intentar desde variable de entorno (Producción)
+            creds_json = os.getenv("GOOGLE_SHEETS_CREDENTIALS_JSON")
+            if creds_json:
+                creds_dict = json.loads(creds_json)
+                creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
+                logger.info("Conexión inicializada desde variable de entorno.")
+            else:
+                # 2. Intentar desde archivo local (Desarrollo)
+                cred_path = Path(__file__).resolve().parent.parent / "credentials.json"
+                if not cred_path.exists():
+                    logger.warning("No hay credenciales configuradas. Modo simulación.")
+                    return
+                creds = Credentials.from_service_account_file(str(cred_path), scopes=scopes)
+                logger.info("Conexión inicializada desde archivo credentials.json.")
+
             self.client = gspread.authorize(creds)
             self.is_connected = True
-            logger.info("Conexión con Google Sheets establecida exitosamente.")
         except Exception as e:
-            logger.error(f"Error al conectar con Google Sheets: {e}")
+            logger.error(f"Error al conectar: {e}")
             self.is_connected = False
 
     def registrar_participante(
